@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Link, Route, Routes } from 'react-router-dom';
+
+import {SuspenseApp} from "./suspense/App";
+import {TraditionalSimpleApp} from "./traditional-simple/App";
+import {TraditionalProductionApp} from "./traditional-production/App";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/suspense" element={<SuspenseApp />} />
+      <Route path="/traditional-production" element={<TraditionalProductionApp />} />
+      <Route path="/traditional-simple" element={<TraditionalSimpleApp />} />
+      <Route path="/" element={<Links />} />
+    </Routes>
   );
 }
+
+const Links = () => (
+  <ul>
+    <li><Link to="/suspense">Suspense</Link></li>
+    <li><Link to="/traditional-simple">Traditional Simple</Link></li>
+    <li><Link to="/traditional-production">Traditional Production</Link></li>
+  </ul>
+)
 
 export default App;
